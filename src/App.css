@@ -1,0 +1,116 @@
+/* 기본 컨테이너 스타일 */
+.container {
+  width: 320px;
+  height: 100%;
+  background: #EDEEDE;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 16px;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  flex-direction: column;
+  display: flex;
+}
+
+/* 헤더 스타일 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  font-weight: bold;
+}
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  align-items: center;
+  margin-bottom: 0px;
+}
+.settings-icon {
+  font-size: 18px;
+  color: gray;
+  cursor: pointer;
+}
+
+/* Block Title */
+.block-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 20px;
+
+}
+
+/* Timer & Count */
+.timer-count {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 800;
+}
+.timer-box {
+  text-align: center;
+}
+
+.counter-box {
+  text-align: center;
+
+}
+
+.label {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.divider-img {
+  height: 50px;
+  width: auto;
+  position: absolute;
+  left: 50%;
+}
+
+/* 버튼 그룹 */
+.start-button {
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.list-button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+.list-button {
+  width: 48%;
+  background: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: white;
+}
+
+.history-button {
+  width: 100%;
+  background: white;
+  color: black;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-top: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.start-button:hover {
+  background: darkgray;
+}

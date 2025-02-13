@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "NoBet",
+  "version": "1.0",
+  "description": "AI 기반 도박 사이트 차단 크롬 익스텐션",
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": ["*://*/*"],
+  "action": {
+    "default_popup": "index.html"
+  }
+}
