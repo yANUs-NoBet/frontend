@@ -35,7 +35,7 @@ const App = () => {
 
       {/* Block Title */}
       <h1 className="block-title">{now_state}</h1>
-
+      <p>안녕녕</p>
       {/* Buttons */}
       <div className="group-btn">
         <button className="start-button" onClick={handleStartStop}>
