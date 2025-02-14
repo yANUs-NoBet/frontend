@@ -1,16 +1,44 @@
-/* 기본 컨테이너 스타일 */
 .container {
   width: 320px;
-  height: 100%;
-  background: #EDEEDE;
-  border-radius: 20px;
+  min-height: 450px;
+  background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 16px;
   overflow: hidden;
   font-family: 'Arial', sans-serif;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  padding-top: 50px; /* 네비게이션 바 공간 확보 */
+}
+
+/* 네비게이션 바 */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 13px 16px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #f8f8f8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logo {
+  height: 20px; /* 로고 크기 조정 */
+  object-fit: contain;
+}
+
+.nav-icon {
+  font-size: 18px;
+  color: #6b7280;
+  cursor: pointer;
 }
 
 /* 헤더 스타일 */
@@ -24,8 +52,8 @@
 .title {
   font-size: 18px;
   font-weight: bold;
-  align-items: center;
   margin-bottom: 0px;
+  
 }
 .settings-icon {
   font-size: 18px;
@@ -33,84 +61,134 @@
   cursor: pointer;
 }
 
-/* Block Title */
-.block-title {
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  margin-top: 20px;
-
-}
-
-/* Timer & Count */
-.timer-count {
+/* 메인 기능 그룹 */
+.main-function {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  font-size: 20px;
-  font-weight: 800;
-}
-.timer-box {
-  text-align: center;
+  height: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-.counter-box {
-  text-align: center;
-
+.intro-text {
+  font-size: 15px;
+  font-weight: 100;
+  margin-bottom: 10px;
+  font-weight: 400;
 }
 
-.label {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 4px;
+.title-block {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 0px;
 }
-.divider-img {
-  height: 50px;
-  width: auto;
-  position: absolute;
-  left: 50%;
+.total-block {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 30px;
 }
 
-/* 버튼 그룹 */
-.start-button {
-  width: 100%;
-  background: black;
-  color: white;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 16px;
-  margin-top: 12px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.list-button-group {
+.toggle-container {
   display: flex;
-  justify-content: space-between;
-  margin-top: 12px;
-}
-.list-button {
-  width: 48%;
-  background: none;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 14px;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-weight: bold;
-  background-color: white;
+  width: 70px;
+  height: 32px;
+  margin-top: 0px;
 }
 
-.history-button {
+.toggle-track {
   width: 100%;
-  background: white;
-  color: black;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 14px;
-  margin-top: 12px;
-  cursor: pointer;
-  font-weight: bold;
+  height: 100%;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: background 0.3s ease-in-out;
+  position: relative;
+  overflow: visible;
 }
 
-.start-button:hover {
-  background: darkgray;
+.toggle-track.enabled {
+  background: #6dbf6f;
+  justify-content: flex-end;
+}
+
+.toggle-track.disabled {
+  background: #e67e54;
+  justify-content: flex-start;
+}
+
+.toggle-circle {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  position: absolute;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.toggle-track.enabled .toggle-circle {
+  transform: translateX(15px);
+  background: #ffffff;
+}
+
+.toggle-track.disabled .toggle-circle {
+  transform: translateX(-15px);
+  background: #ffffff;
+}
+
+.icon {
+  color: #e67e54;
+  transition: color 0.3s ease-in-out;
+}
+
+.toggle-track.enabled .icon {
+  color: #6dbf6f;
+}
+
+.toggle-track.disabled .icon {
+  color: #e67e54;
+}
+
+/* 버튼 그룹 컨테이너 - 컨테이너 크기에 맞춤 */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%; /* 컨테이너 전체 너비 맞춤 */
+  margin-top: 16px;
+  padding: 10px;
+  background: #f8f8f8;
+  border-radius: 10px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.button-group button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: left;
+  transition: background 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-group button:hover {
+  background: #e5e7eb;
 }

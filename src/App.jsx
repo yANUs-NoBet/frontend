@@ -3,52 +3,40 @@ import { useStopwatch } from "react-timer-hook";
 import { FaCog } from "react-icons/fa";
 import "./App.css";
 import dividerImg from "./assets/divider.png";
+import logo from './assets/nobet-logo.png'
+import ToggleButton from "./components/ToggleButton";
+import ButtonGroup from './components/ButtonGroup';
 
 const App = () => {
   const [count, setCount] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  const { seconds, minutes, hours, start, pause } = useStopwatch({
-    autoStart: false,
-  });
+  const [isRunning, setIsRunning] = useState(false); // 🔥 토글 상태 추가
+  const { seconds, minutes, hours, start, pause } = useStopwatch({ autoStart: false });
+  const [isEnabled, setIsEnabled] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 2;
-  const [now_state, change_state] = useState("Block?");
 
-  const handleStartStop = () => {
-    if (!isRunning) {
-      start(); // 타이머 시작
-      change_state("Blocked 0 time");
-    } else {
-      pause(); // 타이머 정지
-      change_state("Block?");
-    }
-    setIsRunning((prev) => !prev); // 🔥 실행 상태 토글
-  };
+  
 
   return (
     <div className="container">
-      {/* Header */}
-      <div className="header">
-        <h2 className="title">NoBet</h2>
-        <FaCog className="settings-icon" />
+
+      {/* Navigation Bar */}
+      <div className="nav-bar">
+        <img src={logo} alt="NoBet Logo" className="nav-logo" />
+        <FaCog className="nav-icon" />
       </div>
 
-      {/* Block Title */}
-      <h1 className="block-title">{now_state}</h1>
-      <p>안녕녕</p>
-      {/* Buttons */}
-      <div className="group-btn">
-        <button className="start-button" onClick={handleStartStop}>
-          {isRunning ? "Pause" : "Start"}
-        </button>
-        <div className="list-button-group">
-          <button className="list-button">Black list</button>
-          <button className="list-button">White list</button>
-        </div>
-        <button className="history-button">Access History</button>
+      {/* main function-group */}
+      <div className="main-function">
+        <h1 className="intro-text">Gambling Site Blocker</h1>
+        <h1 className="title-block">차단: 0개</h1>
+        <p className="total-block">총 차단됨 : 0</p>
+        <ToggleButton></ToggleButton>
       </div>
+      <ButtonGroup></ButtonGroup>
     </div>
   );
 };
+
 
 export default App;
