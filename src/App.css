@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  padding-top: 50px; /* 네비게이션 바 공간 확보 */
+  padding-top: 50px;
 }
 
 /* 네비게이션 바 */
@@ -31,33 +31,13 @@
 }
 
 .nav-logo {
-  height: 20px; /* 로고 크기 조정 */
+  height: 20px;
   object-fit: contain;
 }
 
 .nav-icon {
   font-size: 18px;
   color: #6b7280;
-  cursor: pointer;
-}
-
-/* 헤더 스타일 */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  font-weight: bold;
-}
-.title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 0px;
-  
-}
-.settings-icon {
-  font-size: 18px;
-  color: gray;
   cursor: pointer;
 }
 
@@ -79,18 +59,18 @@
   font-weight: 400;
 }
 
-.title-block {
+.blocked-count {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 0px;
 }
-.total-block {
+.blocked-total-count {
   color: #6b7280;
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 30px;
 }
-
+/* 기능 실행 버튼 */
 .toggle-container {
   display: flex;
   align-items: center;
@@ -159,17 +139,16 @@
   color: #e67e54;
 }
 
-/* 버튼 그룹 컨테이너 - 컨테이너 크기에 맞춤 */
+
 .button-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 100%; /* 컨테이너 전체 너비 맞춤 */
+  width: 100%; 
   margin-top: 16px;
   padding: 10px;
   background: #f8f8f8;
   border-radius: 10px;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .button-group button {
@@ -191,4 +170,110 @@
 
 .button-group button:hover {
   background: #e5e7eb;
+}
+/* AddWhite page */
+.whitelist-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  min-width: 150px;
+  font-size: 14px;
+}
+
+.input-group button {
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 70px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group button:hover {
+  background: #0056b3;
+}
+
+.whitelist {
+  list-style: none;
+  padding: 0;
+}
+
+.whitelist li {
+  background: #f8f9fa;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.whitelist button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: red;
+}
+
+.title-in-page {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.whitelist-table {
+  width: 100%;
+  height: 250px;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+.whitelist-table th, .whitelist-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.whitelist-table th {
+  background-color: #f4f4f4;
+}
+
+.empty-message {
+  padding: 10px;
+  text-align: center;
+  color: gray;
+}
+
+.page-title {
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
