@@ -277,3 +277,83 @@
   margin-top: 20px;
   margin-bottom: 0px;
 }
+
+/* ✅ 리스트 컨테이너 크기 조정 */
+.whitelist-box {
+  max-height: 250px; /* 🔹 일정 개수 초과 시 스크롤 적용 */
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  background: #f9f9f9;
+}
+
+/* ✅ 테이블 스타일 */
+.whitelist-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.whitelist-table th, .whitelist-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+/* ✅ URL 셀 (사이트 이름) */
+.url-cell {
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* ✅ 삭제 버튼 셀 */
+.delete-cell {
+  width: 50px;
+}
+
+.delete-cell button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-cell button:hover {
+  opacity: 0.7;
+}
+
+/* ✅ 입력 그룹 (정렬 유지) */
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.input-group button {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.input-group button:hover {
+  background-color: #0056b3;
+}
+
+/* ✅ 빈 메시지 */
+.empty-message {
+  color: gray;
+  text-align: center;
+  padding: 20px;
+}
