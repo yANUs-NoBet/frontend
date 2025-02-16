@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { X } from "lucide-react"; // ❌ 아이콘 적용
-import '../pages_styles/AddWhite.css'
+import '../pages_styles/AddWhite.css';
 
 function AddWhite() {
   const [site, setSite] = useState(""); // 입력 값
@@ -11,11 +11,18 @@ function AddWhite() {
     setSite(e.target.value);
   };
 
-  // 🔹 차단 제외 목록에 추가
+  // 🔹 차단 제외 목록에 추가 (입력 값 그대로 추가)
   const handleAdd = () => {
     if (site.trim() !== "" && !whitelist.includes(site)) {
-      setWhitelist([...whitelist, site]);
+      setWhitelist([...whitelist, site]); // 입력한 값 그대로 저장
       setSite("");
+    }
+  };
+
+  // 🔹 Enter 키 입력 시 자동 추가
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleAdd();
     }
   };
 
@@ -36,6 +43,7 @@ function AddWhite() {
           placeholder="예: example.com"
           value={site}
           onChange={handleChange}
+          onKeyPress={handleKeyPress} // Enter 키 이벤트 추가
         />
         <button onClick={handleAdd}>추가</button>
       </div>
@@ -59,8 +67,8 @@ function AddWhite() {
                 <tr key={index}>
                   <td className="url-cell">{item}</td>
                   <td className="delete-cell">
-                    <button onClick={() => handleRemove(index)}>
-                      <X size={18} color="red" />
+                    <button onClick={() => handleRemove(index)} className="delete-button">
+                      <X size={18} />
                     </button>
                   </td>
                 </tr>

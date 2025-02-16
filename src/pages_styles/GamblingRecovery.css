@@ -1,0 +1,45 @@
+.recovery-container {
+  width: 100%;
+  max-width: 450px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* 페이지 제목 */
+.page-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* 소개 문구 */
+.intro-text {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 20px;
+}
+
+/* 정보 박스 */
+.info-box {
+  background: #f8f9fa;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-box h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* 링크 스타일 */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
