@@ -1,0 +1,67 @@
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 70px;
+    height: 32px;
+    margin-top: 0px;
+  }
+  
+  .toggle-track {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    transition: background 0.3s ease-in-out;
+    position: relative;
+    overflow: visible;
+  }
+  
+  .toggle-track.enabled {
+    background: #6dbf6f;
+    justify-content: flex-end;
+  }
+  
+  .toggle-track.disabled {
+    background: #e67e54;
+    justify-content: flex-start;
+  }
+  
+  .toggle-circle {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+    position: absolute;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.6);
+  }
+  
+  .toggle-track.enabled .toggle-circle {
+    transform: translateX(15px);
+    background: #ffffff;
+  }
+  
+  .toggle-track.disabled .toggle-circle {
+    transform: translateX(-15px);
+    background: #ffffff;
+  }
+  
+  .icon {
+    color: #e67e54;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .toggle-track.enabled .icon {
+    color: #6dbf6f;
+  }
+  
+  .toggle-track.disabled .icon {
+    color: #e67e54;
+  }

@@ -1,4 +1,5 @@
 import { Check, X } from "lucide-react";
+import '../components_styles/ToggleButton.css'
 
 export default function ToggleButton({ isBlocked, setIsBlocked }) {
 

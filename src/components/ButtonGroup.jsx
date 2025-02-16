@@ -1,5 +1,6 @@
 import { ShieldCheck, BarChart2, Settings, Flag, Globe } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import "../components_styles/ButtonGroup.css";
 
 export default function ButtonGroup() {
   const navigate = useNavigate();

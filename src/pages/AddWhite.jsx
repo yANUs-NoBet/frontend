@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { X } from "lucide-react"; // ❌ 아이콘 적용
+import '../pages_styles/AddWhite.css'
 
 function AddWhite() {
   const [site, setSite] = useState(""); // 입력 값
