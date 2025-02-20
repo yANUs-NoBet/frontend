@@ -1,25 +1,38 @@
 .nav-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 13px 16px;
-    background: #f8f8f8;
-    border-bottom: 1px solid #f8f8f8;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-logo {
-    height: 20px;
-    object-fit: contain;
-  }
-  
-  .nav-icon {
-    font-size: 18px;
-    color: #6b7280;
-    cursor: pointer;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 13px 16px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #f8f8f8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logo {
+  height: 20px;
+  object-fit: contain;
+}
+
+/* 🔥 아이콘 그룹 스타일 (홈 버튼 & 프로필 버튼 포함) */
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 9px; /* 🔥 아이콘 간격 조절 */
+}
+
+/* 🔥 홈 버튼 & 사용자 버튼 스타일 */
+.nav-icon {
+  font-size: 22px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-icon:hover {
+  color: #007bff;
+}
