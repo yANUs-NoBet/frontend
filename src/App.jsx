@@ -1,54 +1,31 @@
-import React, { useState } from "react";
-import { useStopwatch } from "react-timer-hook";
-import { FaCog } from "react-icons/fa";
+import React from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import dividerImg from "./assets/divider.png";
+import NavBar from "./components/NavBar";
+import Home from './pages/Home';
+import AddWhite from './pages/AddWhite';
+import BlockedLog from './pages/BlockedLog';
+import ReportIssue from "./pages/ReportIssue";
+import GamblingRecovery from "./pages/GamblingRecovery";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  const { seconds, minutes, hours, start, pause } = useStopwatch({
-    autoStart: false,
-  });
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 2;
-  const [now_state, change_state] = useState("Block?");
-
-  const handleStartStop = () => {
-    if (!isRunning) {
-      start(); // 타이머 시작
-      change_state("Blocked 0 time");
-    } else {
-      pause(); // 타이머 정지
-      change_state("Block?");
-    }
-    setIsRunning((prev) => !prev); // 🔥 실행 상태 토글
-  };
 
   return (
-    <div className="container">
-      {/* Header */}
-      <div className="header">
-        <h2 className="title">NoBet</h2>
-        <FaCog className="settings-icon" />
-      </div>
+    <Router>
+      <div className="container">
+        <NavBar />
 
-      {/* Block Title */}
-      <h1 className="block-title">{now_state}</h1>
-
-      {/* Buttons */}
-      <div className="group-btn">
-        <button className="start-button" onClick={handleStartStop}>
-          {isRunning ? "Pause" : "Start"}
-        </button>
-        <div className="list-button-group">
-          <button className="list-button">Black list</button>
-          <button className="list-button">White list</button>
-        </div>
-        <button className="history-button">Access History</button>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/add-white" element={<AddWhite />} />
+          <Route path="/blocked-log" element={<BlockedLog />} />
+          <Route path="/report-issue" element={<ReportIssue />} />
+          <Route path="/treat-center" element={<GamblingRecovery />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 };
+
 
 export default App;

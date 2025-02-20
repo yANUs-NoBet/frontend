@@ -1,0 +1,28 @@
+.main-function {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .intro-text {
+    font-size: 15px;
+    font-weight: 100;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+  
+  .blocked-state {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 0px;
+  }
+  .blocked-total-count {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }

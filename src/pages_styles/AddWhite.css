@@ -1,0 +1,90 @@
+.whitelist-container {
+  width: 100%;
+  max-width: 450px; /* 🔥 크기 조정 */
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* 입력 필드 & 버튼 */
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  min-width: 180px;
+  font-size: 14px;
+}
+
+.input-group button {
+  padding: 12px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.input-group button:hover {
+  background: #0056b3;
+}
+
+/* 리스트 테이블 스타일 */
+.whitelist-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+.whitelist-table th, .whitelist-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.whitelist-table th {
+  background-color: #f4f4f4;
+}
+
+.whitelist-table tr:hover {
+  background-color: #f9f9f9; /* 🔥 Hover 효과 추가 */
+}
+
+/* 삭제 버튼 */
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: red;
+  transition: color 0.2s;
+}
+
+.delete-button:hover {
+  color: darkred;
+}
+
+.empty-message {
+  padding: 12px;
+  text-align: center;
+  color: gray;
+  font-size: 14px;
+}
+
+.page-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
