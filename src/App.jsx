@@ -23,6 +23,7 @@ const App = () => {
           <Route path="/report-issue" element={<ReportIssue />} />
           <Route path="/treat-center" element={<GamblingRecovery />} />
           <Route path="/oauth" element={<KakaoRedirect />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>
