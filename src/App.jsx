@@ -7,6 +7,7 @@ import AddWhite from './pages/AddWhite';
 import BlockedLog from './pages/BlockedLog';
 import ReportIssue from "./pages/ReportIssue";
 import GamblingRecovery from "./pages/GamblingRecovery";
+import KakaoRedirect from "./pages/KakaoRedirect";
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/blocked-log" element={<BlockedLog />} />
           <Route path="/report-issue" element={<ReportIssue />} />
           <Route path="/treat-center" element={<GamblingRecovery />} />
+          <Route path="/oauth" element={<KakaoRedirect />} />
         </Routes>
       </div>
     </Router>
