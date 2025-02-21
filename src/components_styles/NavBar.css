@@ -25,14 +25,6 @@
   gap: 9px; /* 🔥 아이콘 간격 조절 */
 }
 
-/* 🔥 홈 버튼 & 사용자 버튼 스타일 */
-.nav-icon {
-  font-size: 22px;
-  color: #6b7280;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
 .nav-icon:hover {
   color: #007bff;
 }
