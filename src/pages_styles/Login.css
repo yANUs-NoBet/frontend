@@ -1,0 +1,88 @@
+/* ✅ 로그인 페이지 전체 컨테이너 */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 380px;
+}
+
+/* ✅ 로그인 박스 */
+.login-box {
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+/* ✅ 로그인 아이콘 */
+.login-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 25px;
+}
+
+/* ✅ 로그인 제목 */
+.login-box h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* ✅ 설명 */
+.login-box p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* ✅ 카카오 로그인 버튼 */
+.kakao-btn {
+    background-color: #FEE500; /* 카카오 노란색 */
+    color: #3C1E1E; /* 카카오 글씨색 */
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* 로고와 글씨 사이 간격 */
+    transition: background 0.3s ease-in-out;
+    margin-top: 25px;
+}
+
+/* ✅ 카카오 버튼 호버 효과 */
+.kakao-btn:hover {
+    background-color: #FFD600;
+}
+
+/* ✅ 카카오 로고 아이콘 */
+.kakao-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ✅ 로그아웃 버튼 */
+.logout-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease-in-out;
+    margin-top: 25px;
+}
+
+/* ✅ 로그아웃 버튼 호버 효과 */
+.logout-btn:hover {
+    background-color: #cc0000;
+}

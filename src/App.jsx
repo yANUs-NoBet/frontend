@@ -8,7 +8,7 @@ import BlockedLog from './pages/BlockedLog';
 import ReportIssue from "./pages/ReportIssue";
 import GamblingRecovery from "./pages/GamblingRecovery";
 import KakaoRedirect from "./pages/KakaoRedirect";
-import Profile from "./pages/Profile";
+import Login from "./pages/Login"
 
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/report-issue" element={<ReportIssue />} />
           <Route path="/treat-center" element={<GamblingRecovery />} />
           <Route path="/oauth" element={<KakaoRedirect />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>

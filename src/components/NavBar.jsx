@@ -13,7 +13,7 @@ export default function NavBar() {
       <AiOutlineUser
           className="nav-icon"
           size={24}
-          onClick={() => navigate("./profile")} // ✅ 프로필 페이지로 이동
+          onClick={() => navigate("./login")} // ✅ 프로필 페이지로 이동
           style={{ cursor: "pointer" }}
         />
         <AiOutlineHome
