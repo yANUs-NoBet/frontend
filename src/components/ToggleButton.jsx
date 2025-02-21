@@ -1,25 +1,23 @@
 import { useEffect } from "react";
 import { Check, X } from "lucide-react";
-import '../components_styles/ToggleButton.css';
+import "../components_styles/ToggleButton.css";
 
-const TOGGLE_STORAGE_KEY = "isBlocked"; // ✅ Chrome 스토리지 키
+const TOGGLE_STORAGE_KEY = "isBlocked"; // ✅ LocalStorage 키
 
 export default function ToggleButton({ isBlocked, setIsBlocked }) {
-
   // ✅ 저장된 토글 상태를 불러오는 함수
   useEffect(() => {
-    chrome.storage.local.get([TOGGLE_STORAGE_KEY], (result) => {
-      if (result[TOGGLE_STORAGE_KEY] !== undefined) {
-        setIsBlocked(result[TOGGLE_STORAGE_KEY]); // ✅ 상태 복원
-      }
-    });
+    const storedState = localStorage.getItem(TOGGLE_STORAGE_KEY);
+    if (storedState !== null) {
+      setIsBlocked(storedState === "true"); // ✅ 문자열을 Boolean 값으로 변환
+    }
   }, []);
 
   // ✅ 토글 버튼 클릭 시 실행되는 함수
   const handleToggle = () => {
     const newBlockedState = !isBlocked; // ✅ 상태 변경
     setIsBlocked(newBlockedState); // ✅ UI 업데이트
-    chrome.storage.local.set({ [TOGGLE_STORAGE_KEY]: newBlockedState }); // ✅ 상태 저장
+    localStorage.setItem(TOGGLE_STORAGE_KEY, newBlockedState.toString()); // ✅ 상태 저장
   };
 
   return (
