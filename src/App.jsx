@@ -8,6 +8,8 @@ import BlockedLog from './pages/BlockedLog';
 import ReportIssue from "./pages/ReportIssue";
 import GamblingRecovery from "./pages/GamblingRecovery";
 import KakaoRedirect from "./pages/KakaoRedirect";
+import Profile from "./pages/Profile";
+
 
 const App = () => {
 
