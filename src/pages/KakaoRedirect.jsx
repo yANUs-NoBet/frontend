@@ -24,7 +24,6 @@ function KakaoRedirect() {
 
     if (accessToken && refreshToken) {
       setCookies(accessToken, refreshToken);
-      alert(accessToken);
       onLoginSuccess();
       navigate("/");
     } else {
