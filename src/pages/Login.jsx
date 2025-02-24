@@ -5,8 +5,7 @@ import KakaoLogo from "../assets/kakao-logo.png";
 import { useCookieManager } from "../customHook/useCookieManager"; // ✅ 쿠키 관리 훅
 import { useNavigate } from "react-router-dom";
 
-const extensionId = chrome.runtime.id; // ✅ 사용자의 크롬 확장 ID 가져오기
-const kakaoURL = `${import.meta.env.VITE_SERVER_URL}/oauth2/authorization/kakao?extensionId=${extensionId}`;
+const kakaoURL = `${import.meta.env.VITE_SERVER_URL}/oauth2/authorization/kakao`;
 
 export default function Login() {
   const { getCookies, removeCookies } = useCookieManager();
