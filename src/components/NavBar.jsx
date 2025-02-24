@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
-import logo from "../assets/nobet-logo.png";
+import logo from "../assets/nobet-textlogo.png";
 import "../components_styles/NavBar.css";
 
 export default function NavBar() {
