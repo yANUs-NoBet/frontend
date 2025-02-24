@@ -5,7 +5,8 @@ import KakaoLogo from "../assets/kakao-logo.png";
 import { useCookieManager } from "../customHook/useCookieManager"; // ✅ 쿠키 관리 훅
 import { useNavigate } from "react-router-dom";
 
-const kakaoURL = `${import.meta.env.VITE_SERVER_URL}/oauth2/authorization/kakao`;
+const extensionId = chrome.runtime.id; // ✅ 사용자의 크롬 확장 ID 가져오기
+const kakaoURL = `${import.meta.env.VITE_SERVER_URL}/oauth2/authorization/kakao?extensionId=${extensionId}`;
 
 export default function Login() {
   const { getCookies, removeCookies } = useCookieManager();
@@ -19,18 +20,8 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (chrome.windows) {
-      // ✅ 크롬 익스텐션 환경에서 새 창(팝업) 열기
-      chrome.windows.create({
-        url: kakaoURL,
-        type: "popup",
-        width: 500,
-        height: 600
-      });
-    } else {
-      // ✅ 일반 웹 환경에서는 기존 방식 유지
-      window.location.href = kakaoURL;
-    }
+    console.log(kakaoURL);
+    window.location.href = kakaoURL; // ✅ 카카오 로그인 페이지로 이동
   };
 
   // ✅ 로그아웃 버튼 클릭 (쿠키 삭제)
