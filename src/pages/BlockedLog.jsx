@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { X } from "lucide-react"; // ❌ 아이콘 적용
 import "../pages_styles/BlockedLog.css";
 
 const serverURL = `${import.meta.env.VITE_SERVER_URL}`;
@@ -19,19 +18,20 @@ function BlockedLog() {
   // 🔹 백엔드에서 데이터 가져오는 함수
   async function fetchBlockedSites(pageNumber) {
     try {
-      const response = await fetch(`${serverURL}/blackUrls/getBlackUrls?page=${pageNumber}&size=5`);
+      const response = await fetch(`${serverURL}/blackUrls/getBlackUrls?page=${pageNumber}&size=10`);
       const data = await response.json();
       console.log("Fetched Data:", data);
 
-      // ✅ 데이터 구조 확인
+      // ✅ 데이터 구조 확인 및 저장
       if (data.resultData && data.resultData.content) {
-        const newSites = data.resultData.content.map((item) => item.blackUrl);
-        console.log("Extracted URLs:", newSites); // ✅ 추출된 데이터 확인
+        const newSites = data.resultData.content.map((item) => ({
+          blackUrl: item.blackUrl,
+          blockedAt: item.blockedAt, // ✅ 차단된 날짜 포함
+        }));
 
         setFilteredSites((prevSites) => [...prevSites, ...newSites]);
         setHasMore(newSites.length > 0); // ✅ 추가 데이터가 있는지 확인
       } else {
-        console.warn("No content found in API response:", data);
         setHasMore(false); // ✅ 데이터가 없으면 더 이상 로드하지 않음
       }
 
@@ -41,25 +41,6 @@ function BlockedLog() {
       setLoading(false);
     }
   }
-
-  // 🔹 차단 해제 요청 (백엔드에 삭제 요청)
-  const handleUnblock = async (site) => {
-    try {
-      const response = await fetch(`${serverURL}/blackUrls/unblock`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ blackUrl: site }), // ✅ 백엔드에 맞게 수정
-      });
-
-      if (response.ok) {
-        setFilteredSites((prevSites) => prevSites.filter((s) => s !== site)); // ✅ UI에서 즉시 제거
-      } else {
-        console.error("차단 해제 요청 실패");
-      }
-    } catch (error) {
-      console.error("차단 해제 요청 중 오류 발생:", error);
-    }
-  };
 
   return (
     <div className="filtered-container">
@@ -74,7 +55,7 @@ function BlockedLog() {
           <thead>
             <tr>
               <th>사이트 URL</th>
-              <th>차단 해제</th>
+              <th>차단 날짜</th> {/* ✅ 차단 날짜 추가 */}
             </tr>
           </thead>
           <tbody>
@@ -85,12 +66,10 @@ function BlockedLog() {
             ) : (
               filteredSites.map((site, index) => (
                 <tr key={index}>
-                  <td className="url-cell">{site}</td>
-                  <td className="delete-cell">
-                    <button onClick={() => handleUnblock(site)} className="unblock-button">
-                      <X size={18} />
-                    </button>
-                  </td>
+                  <td className="url-cell">{site.blackUrl}</td>
+                  <td className="date-cell">
+                    {site.blockedAt }
+                  </td> {/* ✅ 차단 날짜 표시 */}
                 </tr>
               ))
             )}
@@ -108,7 +87,7 @@ function BlockedLog() {
             fetchBlockedSites(nextPage);
           }}
         >
-          더보기
+          더 불러오기
         </button>
       )}
     </div>
