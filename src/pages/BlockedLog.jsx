@@ -74,7 +74,7 @@ function BlockedLog() {
           <thead>
             <tr>
               <th>사이트 URL</th>
-              <th>차단 해제</th>
+              <th>차단일일</th>
             </tr>
           </thead>
           <tbody>
@@ -86,11 +86,7 @@ function BlockedLog() {
               filteredSites.map((site, index) => (
                 <tr key={index}>
                   <td className="url-cell">{site}</td>
-                  <td className="delete-cell">
-                    <button onClick={() => handleUnblock(site)} className="unblock-button">
-                      <X size={18} />
-                    </button>
-                  </td>
+                  <td className="delete-cell"></td>
                 </tr>
               ))
             )}
