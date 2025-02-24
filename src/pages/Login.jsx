@@ -15,7 +15,7 @@ export default function Login() {
   const cookies = getCookies();
   const isLoggedIn = !!cookies.accessToken; // `accessToken`이 있으면 true, 없으면 false
 
-  // ✅ 로그인 버튼 클릭 (카카오 로그인)
+  // ✅ 로그인 버튼 클릭 (팝업 창에서 로그인)
   const handleLogin = (e) => {
     e.preventDefault();
 

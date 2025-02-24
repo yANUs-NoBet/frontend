@@ -24,7 +24,8 @@ const App = () => {
           <Route path="/blocked-log" element={<BlockedLog />} />
           <Route path="/report-issue" element={<ReportIssue />} />
           <Route path="/treat-center" element={<GamblingRecovery />} />
-          <Route path="/oauth" element={<KakaoRedirect />} />
+          <Route path="/oauth" element={<KakaoRedirect />}>
+          </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
