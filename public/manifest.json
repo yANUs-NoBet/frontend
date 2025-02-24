@@ -18,9 +18,9 @@
     }
   },
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/main-icon16.png",
+    "48": "icons/main-icon48.png",
+    "128": "icons/main-icon128.png"
   },
   "web_accessible_resources": [
     {

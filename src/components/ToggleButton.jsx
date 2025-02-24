@@ -15,12 +15,13 @@ export default function ToggleButton({ isBlocked, setIsBlocked }) {
   }, []);
 
   // ✅ 토글 버튼 클릭 시 실행되는 함수
-  const handleToggle = () => {
+  const handleToggle = (event) => {
+    event.preventDefault(); // ✅ 팝업 닫힘 방지
+    event.stopPropagation(); // ✅ 이벤트 전파 방지
+
     const newBlockedState = !isBlocked; // ✅ 상태 변경
     setIsBlocked(newBlockedState); // ✅ UI 업데이트
     chrome.storage.local.set({ [TOGGLE_STORAGE_KEY]: newBlockedState }); // ✅ 상태 저장
-
-    chrome.runtime.reload();
   };
 
   return (
