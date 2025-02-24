@@ -15,10 +15,22 @@ export default function Login() {
   const cookies = getCookies();
   const isLoggedIn = !!cookies.accessToken; // `accessToken`이 있으면 true, 없으면 false
 
-  // ✅ 로그인 버튼 클릭 (카카오 로그인)
+  // ✅ 로그인 버튼 클릭 (팝업 창에서 로그인)
   const handleLogin = (e) => {
     e.preventDefault();
-    window.location.href = kakaoURL; // ✅ 카카오 로그인 페이지로 이동
+
+    if (chrome.windows) {
+      // ✅ 크롬 익스텐션 환경에서 새 창(팝업) 열기
+      chrome.windows.create({
+        url: kakaoURL,
+        type: "popup",
+        width: 500,
+        height: 600
+      });
+    } else {
+      // ✅ 일반 웹 환경에서는 기존 방식 유지
+      window.location.href = kakaoURL;
+    }
   };
 
   // ✅ 로그아웃 버튼 클릭 (쿠키 삭제)
