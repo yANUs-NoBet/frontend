@@ -3,86 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사이트 차단됨</title>
+    <title>접근 차단됨</title>
     <style>
-        /* 🔹 기본 스타일 */
+        /* 🔹 페이지 전체 스타일 */
         body {
-            background-color: #b22222; /* 진한 빨간색 배경 */
+            background-color: #2d2f36; /* 어두운 배경 */
             color: white;
             font-family: "Arial", sans-serif;
             text-align: center;
             padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        /* 🔹 경고 배너 */
-        .warning-banner {
-            background: repeating-linear-gradient(
-                -45deg,
-                black,
-                black 10px,
-                yellow 10px,
-                yellow 20px
-            );
-            height: 30px;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* 🔹 차단 아이콘 */
+        .blocked-icon {
+            width: 100px;
+            margin-bottom: 20px;
         }
 
         /* 🔹 차단 메시지 박스 */
         .blocked-container {
             max-width: 600px;
-            margin: 80px auto;
-            background: #8b0000; /* 어두운 빨간색 */
+            background: #3a3d45; /* 다크 그레이 */
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         }
 
         /* 🔹 제목 */
         h1 {
             font-size: 28px;
             font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        /* 🔹 경고 메시지 */
-        p {
-            font-size: 16px;
             margin-bottom: 10px;
         }
 
-        .warning-text {
-            color: #ffcc00; /* 노란색 */
-            font-weight: bold;
+        /* 🔹 설명 텍스트 */
+        p {
+            font-size: 16px;
+            color: #cccccc; /* 연한 회색 */
+            margin-bottom: 10px;
         }
 
         /* 🔹 고객센터 정보 */
         .contact-info {
             margin-top: 20px;
             font-size: 14px;
-        }
-
-        /* 🔹 아이콘 */
-        .blocked-icon {
-            width: 110px;
-            margin-bottom: 20px;
+            color: #aaaaaa;
         }
     </style>
 </head>
 <body>
 
-    <!-- 🔹 경고 배너 -->
-    <div class="warning-banner"></div>
-
     <!-- 🔹 차단 메시지 -->
     <div class="blocked-container">
-        <img src="../src/assets/blocked-logo.png" alt="차단 아이콘" class="blocked-icon">
-        <h1>사이트 접속이 차단되었습니다.</h1>
-        <p class="warning-text">해당 사이트에 불법, 유해 내용이 포함되어 있어 접속이 차단되었습니다.</p>
-        <p>이와 관련해 궁금한 사항이 있으면 고객센터로 문의해 주세요.</p>
-        </div>
+        <img src="./icons/blocked-logo.png" alt="차단 아이콘" class="blocked-icon" style="height: 150px; width: 150px;">
+        <h1>차단된 사이트</h1>
+        <p>도박 사이트가 감지되었습니다.</p>
+        <p>도박 사이트 접근이 아닐 경우 관리자에게 문의하세요.</p>
     </div>
 
 </body>
