@@ -1,65 +1,88 @@
-.filtered-container {
+/* ✅ 전체 컨테이너 */
+.blocked-container {
   width: 100%;
-  max-width: 500px;
-  margin: 20px auto;
+  max-width: 400px;
+  margin: auto;
   text-align: center;
+  font-family: "Arial", sans-serif;
 }
 
-/* 로딩 메시지 */
-.loading-message {
-  font-size: 16px;
-  color: gray;
-  margin-top: 10px;
-}
-
-/* 필터링된 사이트 목록 테이블 */
-.filtered-table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid #ddd;
-  margin-top: 10px;
-}
-
-.filtered-table th, .filtered-table td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.filtered-table th {
-  background-color: #f4f4f4;
-}
-
-.filtered-table tr:hover {
-  background-color: #f9f9f9; /* 🔥 Hover 효과 추가 */
-}
-
-/* 차단 해제 버튼 */
-.unblock-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: red;
-  transition: color 0.2s;
-}
-
-.unblock-button:hover {
-  color: darkred;
-}
-
-/* 공백 메시지 */
-.empty-message {
-  padding: 12px;
-  text-align: center;
-  color: gray;
-  font-size: 14px;
-}
-
-/* 페이지 제목 */
+/* ✅ 제목 */
 .page-title {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 20px;
   font-weight: bold;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+/* ✅ 차단된 사이트 리스트 */
+.blocked-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ✅ 개별 사이트 카드 */
+.site-card {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: 0.2s ease-in-out;
+}
+
+.site-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ✅ 사이트 URL */
+.site-url {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* ✅ 차단 날짜 */
+.blocked-date {
+  font-size: 12px;
+  color: #777;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* ✅ 페이지네이션 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 15px;
+}
+
+
+  .nav-button {
+    background: none;
+    border: 1px solid white;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: 0.2sease-in-out;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.nav-button:hover {
+  background: #f5f5f5;
+}
+
+.page-info {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0px;
 }
