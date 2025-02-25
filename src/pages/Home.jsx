@@ -1,9 +1,25 @@
-import React, { useState }from "react";
+import React, { useState, useEffect }from "react";
 import ToggleButton from "../components/ToggleButton";
 import ButtonGroup from "../components/ButtonGroup.jsx";
 import '../pages_styles/Home.css'
+import {useCookieManager} from '../customHook/useCookieManager'
 
 function Home() {
+  const { getCookies, setCookies, removeCookies } = useCookieManager();
+  const findUser = async (e)  =>{
+    const localAccesstoken = getCookies().accessToken;
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/auth/user`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localAccesstoken}`
+      }
+    });
+    console.log(await response.json());
+  }
+  useEffect(()=>{
+    findUser();
+  })
 
   const [isBlocked, setIsBlocked] = useState(false);
 

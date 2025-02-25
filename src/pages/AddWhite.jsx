@@ -6,50 +6,109 @@ import {useCookieManager} from '../customHook/useCookieManager'
 function AddWhite() {
   const [site, setSite] = useState(""); // 입력 값
   const [whitelist, setWhitelist] = useState([]); // 차단 제외 목록
-  const { getCookies, removeCookies } = useCookieManager();
+  const { getCookies, setCookies, removeCookies } = useCookieManager();
   // 🔹 입력 필드 값 변경 핸들러
   const handleChange = (e) => {
     setSite(e.target.value);
   };
 
+  async function refreshAccessToken() {
+    const refreshToken = getCookies().refreshToken;
+    if (!refreshToken) return removeCookies("accessToken"), removeCookies("refreshToken");
+    const localAccessToken = cookies.accessToken;
+
+    const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/auth/reissue`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" ,
+          'Authorization': `Bearer ${localAccessToken}`
+        },
+        body: JSON.stringify({ "accessToken":accessToken,"refreshToken":refreshToken }),
+    });
+
+    if (!res.ok) return removeCookies("accessToken"), removeCookies("refreshToken");
+
+    const { accessToken, refreshToken: newRefreshToken } = await res.json();
+    setCookies("accessToken", accessToken);
+    setCookies("refreshToken", newRefreshToken);
+  }
   const fetchWhiteList = async () => {
     const cookies = getCookies();
-    console.log("쿠키 데이터:", cookies); // 쿠키 확인
     const localAccessToken = cookies.accessToken;
-    if (localAccessToken) {
-      try {
+    if (!localAccessToken) {
+        console.warn("AccessToken이 존재하지 않습니다.");
+        return;
+    }
+
+    try {
         const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/whiteUrls/getWhiteUrls`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localAccessToken}`
-          }
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localAccessToken}`
+            }
         });
-  
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-  
+
+        if (!response.ok) throw new Error('화이트 리스트 불러오기 실패');
+
         const data = await response.json();
-        console.log('화이트 리스트 가져오기:', data.resultData); // 응답 데이터 확인
-      } catch (error) {
+        console.log('화이트 리스트 가져오기:', data.resultData); 
+
+        // 🔹 API 응답 데이터를 `whitelist` 상태에 저장
+        setWhitelist(data.resultData.map(item => item.whiteUrl));
+
+    } catch (error) {
         console.error('화이트 리스트 불러오기 오류:', error);
-        removeCookies(); // 오류 시 쿠키 제거 및 로그아웃 처리
-      }
-    } else {
-      console.warn("AccessToken이 존재하지 않습니다.");
+        refreshAccessToken();
     }
   };
+
   
 
   // 🔹 차단 제외 목록에 추가 (입력 값 그대로 추가)
-  const handleAdd = () => {
-    if (site.trim() !== "" && !whitelist.includes(site)) {
-      setWhitelist([...whitelist, site]); // 입력한 값 그대로 저장
-      setSite("");
-    }
+  const isValidUrl = (url) => {
+    const urlPattern = /^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+    return urlPattern.test(url);
   };
-
+  
+  const handleAdd = async () => {
+      if (site.trim() === "" || whitelist.includes(site)) {
+          console.warn("이미 존재하거나 빈 값입니다.");
+          return;
+      }
+  
+      if (!isValidUrl(site)) {
+          alert("올바른 URL 형식이 아닙니다. (예: naver.com, google.co.kr)");
+          return;
+      }
+    
+      const cookies = getCookies();
+      const localAccessToken = cookies.accessToken;
+      if (!localAccessToken) {
+          console.warn("AccessToken이 존재하지 않습니다.");
+          return;
+      }
+  
+      try {
+          const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/whiteUrls/newWhiteUrls`, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${localAccessToken}`
+              },
+              body: JSON.stringify({ whiteUrl: site })
+          });
+  
+          if (!response.ok) throw new Error("화이트 리스트 추가 실패");
+  
+          // ✅ 성공 시 상태 업데이트
+          setWhitelist([...whitelist, site]);
+          setSite("");
+      } catch (error) {
+          console.error("화이트 리스트 추가 오류:", error);
+      }
+  };
+  
+  
   // 🔹 Enter 키 입력 시 자동 추가
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
