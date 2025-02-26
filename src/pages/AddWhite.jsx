@@ -13,7 +13,7 @@ function AddWhite() {
   };
 
   async function refreshAccessToken() {
-    const refreshToken = getCookies().refreshToken;
+    const refreshToken = await getCookies().refreshToken;
     if (!refreshToken) return removeCookies("accessToken"), removeCookies("refreshToken");
     const localAccessToken = cookies.accessToken;
 
@@ -32,7 +32,7 @@ function AddWhite() {
     setCookies("refreshToken", newRefreshToken);
   }
   const fetchWhiteList = async () => {
-    const cookies = getCookies();
+    const cookies = await getCookies();
     const localAccessToken = cookies.accessToken;
     if (!localAccessToken) {
         console.warn("AccessToken이 존재하지 않습니다.");
@@ -81,7 +81,7 @@ function AddWhite() {
           return;
       }
     
-      const cookies = getCookies();
+      const cookies = await getCookies();
       const localAccessToken = cookies.accessToken;
       if (!localAccessToken) {
           console.warn("AccessToken이 존재하지 않습니다.");
@@ -120,7 +120,7 @@ function AddWhite() {
   const handleRemove = async (index) => {
     const siteToRemove = whitelist[index];
 
-    const cookies = getCookies();
+    const cookies = await getCookies();
     const localAccessToken = cookies.accessToken;
     if (!localAccessToken) {
         console.warn("AccessToken이 존재하지 않습니다.");
